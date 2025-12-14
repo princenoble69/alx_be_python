@@ -39,7 +39,7 @@ match operation:
 
 # 3. Output the Result
 if result is not None and result != "Undefined":
-    print(f"The result of {num1} {operation} {num2} is: {result}")
+   print(f"The result of the operation is: {result}")
 elif result == "Undefined":
      # This prints only if the division by zero error occurred
      pass

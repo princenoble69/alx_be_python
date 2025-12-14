@@ -1,17 +1,21 @@
+# 1. Get Input and Convert to Numbers
+# Use a try-except block to handle non-numeric input gracefully
 try:
     num1_str = input("Enter the first number: ")
     num2_str = input("Enter the second number: ")
+    
+    # Convert input strings to floating-point numbers
     num1 = float(num1_str)
     num2 = float(num2_str)
-
+    
 except ValueError:
-    print("Error: Enter numerical values only.")
-    exit() # Exit the script if input is bad
+    print("Error: Invalid number entered. Please enter numerical values only.")
+    exit() # Stop the script if conversion fails
 
-operation = input("Choose an operation (+, -, *, /): ")
-result = None # Initialize result
+operation = input("Choose the operation (+, -, *, /): ")
+result = None # Initialize result variable
 
-# --- MATCH-CASE: CALCULATION ONLY ---
+# 2. Control Flow using match-case
 match operation:
     case '+':
         result = num1 + num2
@@ -23,20 +27,20 @@ match operation:
         result = num1 * num2
     
     case '/':
+        # Case for division: requires a check for division by zero
         if num2 != 0:
             result = num1 / num2
         else:
-            print("Cannot divide by zero.")
-            # Set result to a specific string to signal error
-            result = "DIVISION_ERROR"
+            print("Error: Cannot divide by zero.")
+            result = "Undefined"
     
     case _:
-        # Handles invalid operation input
-        print("Error: Enter a valid operation (+, -, *, /).")
-        # Set result to None or "INVALID" to prevent the final print
-        result = "INVALID_OP" 
+        # The wildcard case: handles any operation input that doesn't match the above
+        print("Error: Invalid operation choice.")
 
-# --- CENTRALIZED OUTPUT ---
-# Only print the result if a valid calculation was performed (result is a number)
-if isinstance(result, (float, int)):
-    print(f"The result is: {result}")
+# 3. Output the Result
+if result is not None and result != "Undefined":
+    print(f"The result of {num1} {operation} {num2} is: {result}")
+elif result == "Undefined":
+     # This prints only if the division by zero error occurred
+     pass

@@ -1,24 +1,16 @@
-pattern = 0
+number = int(input("Enter a number to see its multiplication table: "))
 
-try:
-    pattern = int(input("Enter the size of the pattern: "))
+for i in range(1, 11):
+    product = number * i
+    print(f"{number} * {i} = {product}")
 
-except ValueError:
-    print("ERROR: ENTER NUMERICAL VALUES ONLY.")
-    exit()
+size = int(input("Enter the size of the pattern: "))
 
-if pattern <= 0:
-    print("Error: The number must be a positive integer.")
-    exit()
-
-ASH = '*'
 row = 0
-
-while row < pattern:
-    
-    for col in range(pattern):
-        print(ASH, end="") 
+while row < size:
+    for _ in range(size):
+        
+        print("*", end="")
     
     print()
-    
     row += 1

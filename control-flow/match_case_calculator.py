@@ -1,46 +1,22 @@
-# 1. Get Input and Convert to Numbers
-# Use a try-except block to handle non-numeric input gracefully
-try:
-    num1_str = input("Enter the first number: ")
-    num2_str = input("Enter the second number: ")
-    
-    # Convert input strings to floating-point numbers
-    num1 = float(num1_str)
-    num2 = float(num2_str)
-    
-except ValueError:
-    print("Error: Invalid number entered. Please enter numerical values only.")
-    exit() # Stop the script if conversion fails
-
+num1 = float(input("Enter the first number: "))
+num2 = float(input("Enter the second number: "))
 operation = input("Choose the operation (+, -, *, /): ")
-result = None # Initialize result variable
 
-# 2. Control Flow using match-case
 match operation:
-    case '+':
+    case "+":
         result = num1 + num2
-    
-    case '-':
+        print(f"The result is {result}.")
+    case "-":
         result = num1 - num2
-    
-    case '*':
+        print(f"The result is {result}.")
+    case "*":
         result = num1 * num2
-    
-    case '/':
-        # Case for division: requires a check for division by zero
-        if num2 != 0:
-            result = num1 / num2
+        print(f"The result is {result}.")
+    case "/":
+        if num2 == 0:
+            print("Cannot divide by zero.")
         else:
-            print("Error: Cannot divide by zero.")
-            result = "Undefined"
-    
+            result = num1 / num2
+            print(f"The result is {result}.")
     case _:
-        # The wildcard case: handles any operation input that doesn't match the above
-        print("Error: Invalid operation choice.")
-
-# 3. Output the Result
-if result is not None and result != "Undefined":
-    print(f"The result of {num1} {operation} {num2} is: {result}")
-elif result == "Undefined":
-     # This prints only if the division by zero error occurred
-     pass
+        print("Invalid operation selected.")
